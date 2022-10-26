@@ -1,0 +1,61 @@
+Manifest for CCC
+---
+    formatVersion: 1
+    name: HC-CCC-Custom-Hostname-Generator
+    version: 2.0.1
+    description: |-
+        This manifest file is created as a bill of materials (BoM) of Custom hostname generator v2
+    dependencies:
+        - N/A:
+    resources:
+        - vro_workflow:
+            name: Generate Custom Hostname v2              
+            version: '0.0.5'            
+            module: /_Allianz/CustomHostname    
+        - vro_action:
+            name: Locking             
+            module: com.vmware.pscoe.library.locking    
+            version: '1.0.0'  
+# remaining artifacts are removed
+ 
+ 
+ 
+Manifest for RHEL on Prem
+---
+    formatVersion: 1
+    name: HC Service RHEL on Prem
+    version: 49.0.0
+    description: |-
+        This manifest file is created as a bill of materials (BoM) of HC RHEL on Private Service
+    dependencies:
+        - Cross Cutting Capability:
+            name: Custom Hostname Generator
+            type: Cross Cutting Capability
+            version: 2.0.0
+        - Cross Cutting Capability:
+            name: Catalog Item Sharing Automation
+            type: Cross Cutting Capability
+            version: 1.4.0
+    resources:
+        - catalog_item:
+            name: RHEL Private   
+            version: '49'    
+# remaining artifacts are removed
+ 
+ 
+Manifest for PostgreSQL
+---
+    formatVersion: 1
+    name: HC Service PostgreSQL
+    version: 2.5.0
+    description: |-
+        This manifest file is created as a bill of materials (BoM) of HC PostgreSQL Service
+    dependencies:
+        - hc_service:
+            name: HC Service RHEL on Prem
+            version: 49.0.0
+    resources:
+        - catalog_item:
+            name: PostgreSQL  
+            version: '12'   
+# remaining artifacts are removed
